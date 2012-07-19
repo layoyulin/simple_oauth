@@ -109,7 +109,8 @@ module SimpleOAuth
     end
 
     def private_key
-      OpenSSL::PKey::RSA.new(options[:consumer_secret])
+      key = options[:private_key] || options[:consumer_secret]
+      OpenSSL::PKey::RSA.new(key)
     end
 
   end
